@@ -59,7 +59,7 @@
 
         function updatePresenceCountOutside(presenceCount) {
             if (!config.showPresenceCountOutside) return;
-            const extOnlineSpan = document.querySelector('.discord-online-title');
+            const extOnlineSpan = document.querySelector('.discord-online-count');
             if (extOnlineSpan) {
                 extOnlineSpan.innerHTML = `<span style="color:limegreen;">●</span> ${presenceCount} online`;
                 extOnlineSpan.classList.add("discord-online");
