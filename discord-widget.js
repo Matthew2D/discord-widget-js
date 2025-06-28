@@ -27,7 +27,7 @@
             showPresenceCountOutside: false,
             showOnlineMore: true,
             maxDisplayedMembers: 20,
-            serverId: '',    // REQUIRED: Discord server ID
+            serverId: '', // REQUIRED: Discord server ID
             joinButtonText: 'Join Server',
             filterUserPattern: /^[a-zA-Z]\.\.\.$/ // Filter out usernames like "a..."
         };
@@ -38,23 +38,25 @@
         function escapeHTML(str) {
             if (!str) return '';
             return String(str).replace(/[&<>"'`=\/]/g, s => ({
-                '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;',
-                "'": '&#39;', '`': '&#96;', '=': '&#61;', '/': '&#47;'
-            }[s]));
+                '&': '&amp;',
+                '<': '&lt;',
+                '>': '&gt;',
+                '"': '&quot;',
+                "'": '&#39;',
+                '`': '&#96;',
+                '=': '&#61;',
+                '/': '&#47;'
+            } [s]));
         }
 
         function getChannelIcon(type) {
             // Emoji for cross-platform compatibility
-            return type === "voice"
-                ? `<span aria-label="voice" title="Voice Channel">🔊</span>`
-                : `<span aria-label="text" title="Text Channel">#</span>`;
+            return type === "voice" ? `<span aria-label="voice" title="Voice Channel">🔊</span>` : `<span aria-label="text" title="Text Channel">#</span>`;
         }
 
         function sortChannels(channels) {
             if (!Array.isArray(channels)) return [];
-            return config.channelsAlphabetical
-                ? channels.slice().sort((a, b) => a.name.localeCompare(b.name))
-                : channels.slice().sort((a, b) => a.position - b.position);
+            return config.channelsAlphabetical ? channels.slice().sort((a, b) => a.name.localeCompare(b.name)) : channels.slice().sort((a, b) => a.position - b.position);
         }
 
         function updatePresenceCountOutside(presenceCount) {
@@ -69,14 +71,12 @@
 
         function renderChannelsSection(channels) {
             if (config.hideAllChannels || !config.showChannels) return '';
-            const channelsHtml = channels.length > 0
-                ? channels.map(ch => `
+            const channelsHtml = channels.length > 0 ? channels.map(ch => `
           <div class="discord-channel" title="${escapeHTML(ch.name)}">
             ${getChannelIcon(ch.type)}
             <span class="discord-channel-name">${escapeHTML(ch.name)}</span>
           </div>
-        `).join('')
-                : '<span class="discord-empty">No channels found.</span>';
+        `).join('') : '<span class="discord-empty">No channels found.</span>';
 
             return `
         <div class="discord-section">
@@ -92,27 +92,16 @@
             if (config.membersListAlwaysScrollable) {
                 membersListClass += ' discord-members-list-scroll';
             }
-            const listInitialClass = config.membersCollapsible
-                ? (config.membersCollapsedByDefault ? 'collapsed' : 'expanded')
-                : 'expanded';
+            const listInitialClass = config.membersCollapsible ? (config.membersCollapsedByDefault ? 'collapsed' : 'expanded') : 'expanded';
 
-            const membersHtml = onlineMembers.length > 0
-                ? onlineMembers.slice(0, config.maxDisplayedMembers).map(member => `
+            const membersHtml = onlineMembers.length > 0 ? onlineMembers.slice(0, config.maxDisplayedMembers).map(member => `
             <div class="discord-member" title="${escapeHTML(member.username)}">
               <img class="discord-member-avatar" src="${member.avatar_url}" alt="${escapeHTML(member.username)}" />
               <span class="discord-member-name">${escapeHTML(member.username)}</span>
             </div>
-          `).join('')
-                : '<span class="discord-empty">No members online.</span>';
+          `).join('') : '<span class="discord-empty">No members online.</span>';
 
-            const moreMembersNotice = (
-                config.showOnlineMore &&
-                config.showMembers &&
-                config.maxDisplayedMembers > 0 &&
-                presenceCount > config.maxDisplayedMembers
-            )
-                ? `<span style="margin-left:5px;">+${(presenceCount - config.maxDisplayedMembers).toLocaleString()} more...</span>`
-                : '';
+            const moreMembersNotice = (config.showOnlineMore && config.showMembers && config.maxDisplayedMembers > 0 && presenceCount > config.maxDisplayedMembers) ? `<span style="margin-left:5px;">+${(presenceCount - config.maxDisplayedMembers).toLocaleString()} more...</span>` : '';
 
             if (config.membersCollapsible) {
                 return `
