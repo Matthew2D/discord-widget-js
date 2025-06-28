@@ -1,0 +1,230 @@
+/* Optional Discord Widget Theme */
+/* Feel free to tweak colors, padding, and border radius for your brand */
+
+.discord-widget {
+    background: #23272a;
+    color: #f6f6f7;
+    border-radius: 14px;
+    box-shadow: 0 4px 28px 0 rgba(40, 45, 50, 0.13);
+    font-family: 'Segoe UI', 'Inter', 'Roboto', Arial, sans-serif;
+    max-width: 350px;
+    margin: 24px auto;
+    padding: 0;
+    overflow: hidden;
+    border: 2px solid #313338;
+}
+
+.discord-content {
+    padding: 20px 24px 16px 24px;
+}
+
+.discord-section-title {
+    color: #fff;
+    font-weight: 600;
+    font-size: 1.08em;
+    letter-spacing: 0.01em;
+    margin-bottom: 8px;
+}
+
+.discord-section:not(:last-child) {
+    margin-bottom: 18px;
+}
+
+.discord-channel,
+.discord-member {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: none;
+    border-radius: 6px;
+    padding: 7px 6px 7px 0;
+    transition: background 0.12s;
+    font-size: 0.98em;
+}
+
+.discord-channel:hover,
+.discord-member:hover {
+    background: rgba(114, 137, 218, 0.11);
+}
+
+.discord-channel-name,
+.discord-member-name {
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.discord-channel span[aria-label="voice"],
+.discord-channel span[aria-label="text"] {
+    font-size: 1.1em;
+    opacity: 0.83;
+}
+
+.discord-channels-list,
+.discord-members-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.discord-empty {
+    display: block;
+    color: #b5bac1;
+    font-size: 0.96em;
+    padding: 6px 0;
+    text-align: center;
+}
+
+.discord-member-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #313338;
+    object-fit: cover;
+    border: 2px solid #313338;
+    box-shadow: 0 1px 2px 0 rgba(0,0,0,0.05);
+}
+
+.discord-members-section {
+    margin-bottom: 0;
+}
+
+.discord-members-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 1em;
+    cursor: pointer;
+    user-select: none;
+    padding: 6px 0;
+}
+
+.discord-members-toggle {
+    font-size: 1.1em;
+    color: #949ba4;
+    transition: transform 0.2s;
+}
+
+.discord-members-list {
+    margin-top: 3px;
+    transition: max-height 0.22s cubic-bezier(.4,0,.2,1), opacity 0.2s;
+    overflow: hidden;
+    max-height: 550px;
+    opacity: 1;
+
+}
+.discord-members-list.collapsed {
+    max-height: 0;
+    opacity: 0;
+    pointer-events: none;
+}
+
+.discord-members-list-scroll {
+    max-height: 160px;      /* Adjust to how many members you want visible */
+    overflow-y: auto !important;
+    scrollbar-width: thin;
+}
+
+/* When scroll is active, ignore collapse/expand max-height, let scroll rule win */
+.discord-members-list-scroll.expanded {
+    max-height: 160px !important;
+    overflow-y: auto !important;
+}
+.discord-members-list-scroll.collapsed {
+    max-height: 0 !important;
+    opacity: 0;
+    overflow: hidden !important;
+    pointer-events: none;
+}
+
+.discord-stats-section {
+    padding: 10px 0 0 0;
+    text-align: left;
+}
+
+.discord-stats {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.discord-online {
+    color: #57f287 !important;
+    font-weight: 600;
+}
+
+.discord-offline {
+    color: #b5bac1 !important;
+    font-weight: 500;
+}
+
+.discord-invite-btn {
+    display: block;
+    width: 100%;
+    background: linear-gradient(90deg, #5865f2 0%, #4752c4 100%);
+    color: #fff;
+    font-weight: 600;
+    text-align: center;
+    padding: 12px 0;
+    border-radius: 8px;
+    margin: 22px 0 4px 0;
+    font-size: 1.07em;
+    text-decoration: none;
+    transition: background 0.18s, box-shadow 0.18s;
+    box-shadow: 0 2px 6px 0 rgba(88,101,242,0.12);
+    border: none;
+}
+
+.discord-invite-btn:hover {
+    background: linear-gradient(90deg, #4752c4 0%, #5865f2 100%);
+    box-shadow: 0 4px 16px 0 rgba(88,101,242,0.19);
+}
+
+.discord-error {
+    color: #ff6161;
+    background: rgba(30, 33, 36, 0.82);
+    border-radius: 6px;
+    font-weight: 600;
+    padding: 13px;
+    margin: 14px 0;
+    text-align: center;
+}
+
+@media (max-width: 600px) {
+    .discord-widget, .discord-content {
+        max-width: 100vw;
+        padding: 12px !important;
+        font-size: 0.98em;
+    }
+    .discord-invite-btn {
+        font-size: 1em;
+        padding: 10px 0;
+    }
+}
+
+.discord-members-list-scroll {
+    max-height: 160px;      /* Adjust to how many members you want visible */
+    overflow-y: auto !important;
+    scrollbar-width: thin;
+}
+
+.discord-members-list {
+    /* Remove max-height for expanded by default lists so scrolling takes over */
+    transition: max-height 0.22s cubic-bezier(.4,0,.2,1), opacity 0.2s;
+    overflow: hidden;
+    max-height: 550px;
+    opacity: 1;
+}
+
+/* When scroll is active, ignore collapse/expand max-height, let scroll rule win */
+.discord-members-list-scroll.expanded {
+    max-height: 160px !important;
+    overflow-y: auto !important;
+}
+.discord-members-list-scroll.collapsed {
+    max-height: 0 !important;
+    opacity: 0;
+    overflow: hidden !important;
+    pointer-events: none;
+}
