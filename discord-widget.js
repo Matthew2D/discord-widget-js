@@ -1,7 +1,7 @@
 /*!
  * Discord Widget
  * Lightweight embeddable Discord server widget
- * https://github.com/yourusername/discord-widget
+ * https://github.com/matthew2d/discord-widget
  * MIT License
  */
 (function(global) {
