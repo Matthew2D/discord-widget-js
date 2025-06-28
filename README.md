@@ -17,12 +17,16 @@ No third-party dependencies, simple setup, fully customizable look and behavior.
 
 ---
 
+![Screenshot](https://i.imgur.com/lZn5HFy.png)
+
 ## Installation
 
 1. **Download** [`discord-widget.js`](discord-widget.js) and include it in your site.
 
    ```html
    <script src="discord-widget.js"></script>
+   <link rel="stylesheet" type="text/css" href="discord-widget.css">
+   
    <div class="discord-widget">
       <div class="discord-content"></div>
    </div>
@@ -75,32 +79,7 @@ initDiscordWidgets({
 
 ## Custom Styling
 
-This widget ships with no CSS, so you can style it any way you like!
-Here’s a quick example to get you started:
-
-```
-.discord-widget {
-  border: 1px solid #5865f2;
-  border-radius: 8px;
-  max-width: 340px;
-  background: #23272a;
-  color: #fff;
-  font-family: 'Segoe UI', Arial, sans-serif;
-  overflow: hidden;
-}
-
-.discord-section-title { font-weight: bold; margin-bottom: 6px; }
-.discord-channel, .discord-member { display: flex; align-items: center; margin-bottom: 6px; }
-.discord-channel-name, .discord-member-name { margin-left: 8px; }
-.discord-member-avatar { border-radius: 50%; width: 32px; height: 32px; }
-.discord-invite-btn {
-  display: block; text-align: center; margin: 14px 0; padding: 10px;
-  background: #5865f2; color: #fff; border-radius: 4px; text-decoration: none;
-  font-weight: bold; transition: background 0.2s;
-}
-.discord-invite-btn:hover { background: #4752c4; }
-.discord-members-list.collapsed { display: none; }
-```
+This widget ships with an optional CSS theme, but you can style it any way you like!
 
 ## presence_count Outside the Widget
 
