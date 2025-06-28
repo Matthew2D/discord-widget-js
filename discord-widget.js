@@ -24,7 +24,7 @@
             membersCollapsedByDefault: false,
             customInviteURL: '', // fallback to Discord API invite if blank
             membersListAlwaysScrollable: false,
-            showPresenceCountTitle: false,
+            showPresenceCountOutside: false,
             showOnlineMore: true,
             maxDisplayedMembers: 20,
             serverId: '',    // REQUIRED: Discord server ID
@@ -57,8 +57,8 @@
                 : channels.slice().sort((a, b) => a.position - b.position);
         }
 
-        function updatePresenceCountTitle(presenceCount) {
-            if (!config.showPresenceCountTitle) return;
+        function updatePresenceCountOutside(presenceCount) {
+            if (!config.showPresenceCountOutside) return;
             const extOnlineSpan = document.querySelector('.discord-online-title');
             if (extOnlineSpan) {
                 extOnlineSpan.innerHTML = `<span style="color:limegreen;">●</span> ${presenceCount} online`;
@@ -141,7 +141,7 @@
         }
 
         function renderStatsSection(onlineCount, presenceCount) {
-            if (config.showPresenceCountTitle) return '';
+            if (config.showPresenceCountOutside) return '';
             const onlineClass = onlineCount > 0 ? 'discord-online' : 'discord-offline';
             return `
         <div class="discord-stats-section">
@@ -206,7 +206,7 @@
                     const presenceCount = data.presence_count ?? onlineMembers.length;
                     const sortedChannels = sortChannels(data.channels || []);
 
-                    updatePresenceCountTitle(presenceCount);
+                    updatePresenceCountOutside(presenceCount);
 
                     const channelsSectionHtml = renderChannelsSection(sortedChannels);
                     const membersSectionHtml = renderMembersSection(onlineMembers, presenceCount);
